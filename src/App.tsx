@@ -1,15 +1,12 @@
-import Button from "./components/Button"
-import TextInput from "./components/TextInput";
+import TodoList from "./components/TodoList";
 
 function App() {
-
   return (
-    <>
-    <h1>Add your tasks</h1>
-    <TextInput />
-    <Button name="add"/>
-    </>
-  )
+    <div className="app">
+      <h1>Add tasks</h1>
+      <TodoList />
+    </div>
+  );
 }
 
 export default App;

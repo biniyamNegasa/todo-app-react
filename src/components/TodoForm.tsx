@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import TodoService from "../TodoService";
 import TodoTypes from "../todo";
+import "../style.css";
 
 interface PropTypes {
   setTodos: Dispatch<SetStateAction<TodoTypes[]>>;

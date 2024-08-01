@@ -2,6 +2,7 @@ import { useState } from "react";
 import TodoTypes from "../todo";
 import TodoService from "../TodoService";
 import TodoForm from "./TodoForm";
+import "../style.css";
 
 function TodoList() {
   const [todos, setTodos] = useState<TodoTypes[]>(TodoService.getTodos());
@@ -35,9 +36,10 @@ function TodoList() {
 
   const handleDeleteTodo = (id: number) => {
     TodoService.deleteTodo(id);
-    setTodos((prevTodo) => prevTodo.filter((todo) => todo.id !== id));
+    setTodos((prevTodo) => prevTodo.filter((todo) => todo && todo.id !== id));
   };
 
+  console.log(todos);
   return (
     <div className="todo-container">
       <div>
@@ -60,13 +62,15 @@ function TodoList() {
             </div>
           ) : (
             <div className="editBtn">
-              <span>{todo.text}</span>
+              <div>{todo.text}</div>
               <button onClick={() => handleEditStart(todo.id, todo.text)}>
                 Edit
               </button>
             </div>
           )}
-          <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+          <button className="delete" onClick={() => handleDeleteTodo(todo.id)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>
